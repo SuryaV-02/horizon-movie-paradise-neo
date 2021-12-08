@@ -1,0 +1,33 @@
+$body-bg : #0A100C;
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body{
+    overflow-x: hidden;
+}
+// Body
+
+
+// Header*************************************
+
+.header-title{
+    font-family: 'Slabo 27px', serif;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+.header-captions{
+    font-family: 'Roboto', sans-serif;
+    color: #5C5C5C;
+    font-size: 18;
+    font-weight: 800;
+}
+
+.container-login-icon{
+    background-color: #313131;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+}
