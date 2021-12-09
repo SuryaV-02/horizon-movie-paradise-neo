@@ -42,11 +42,17 @@ body{
 // Poster
 .container-poster{
     position: absolute;
-     bottom: 0px;
+    bottom: 0px;
     height: 500px;
     background-size: cover;
     background-image: url("../assets/poster_college_cropped.png");
     @media (max-height : 1532px) {
         height: 400px;
+    }
+    @media (max-width: 576px) {
+        height: 600px;
+        background-size: fill;
+        
+        
     }
 }

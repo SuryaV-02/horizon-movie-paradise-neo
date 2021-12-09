@@ -11167,5 +11167,11 @@ body {
     height: 400px;
   }
 }
+@media (max-width: 576px) {
+  .container-poster {
+    height: 600px;
+    background-size: fill;
+  }
+}
 
 /*# sourceMappingURL=/custom.18d3a4a7.css.map */
