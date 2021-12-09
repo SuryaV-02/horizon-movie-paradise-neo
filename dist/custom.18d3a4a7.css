@@ -11150,4 +11150,22 @@ body {
   width: 30px;
 }
 
+.search-bar {
+  height: 50px;
+  border-radius: 30px;
+}
+
+.container-poster {
+  position: absolute;
+  bottom: 0px;
+  height: 500px;
+  background-size: cover;
+  background-image: url("/poster_college_cropped.df0e61ae.png");
+}
+@media (max-height: 1532px) {
+  .container-poster {
+    height: 400px;
+  }
+}
+
 /*# sourceMappingURL=/custom.18d3a4a7.css.map */

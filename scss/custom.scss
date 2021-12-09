@@ -31,3 +31,22 @@ body{
     height: 30px;
     width: 30px;
 }
+
+// Searchbar ***************
+
+.search-bar{
+    height: 50px;
+    border-radius: 30px;
+}
+
+// Poster
+.container-poster{
+    position: absolute;
+     bottom: 0px;
+    height: 500px;
+    background-size: cover;
+    background-image: url("../assets/poster_college_cropped.png");
+    @media (max-height : 1532px) {
+        height: 400px;
+    }
+}
