@@ -47,7 +47,8 @@ body{
     background-size: cover;
     background-image: url("../assets/poster_college_cropped.png");
     @media (max-height : 1532px) {
-        height: 400px;
+        height: 300px;
+        
     }
     @media (max-width: 576px) {
         height: 600px;

@@ -11164,7 +11164,7 @@ body {
 }
 @media (max-height: 1532px) {
   .container-poster {
-    height: 400px;
+    height: 300px;
   }
 }
 @media (max-width: 576px) {
