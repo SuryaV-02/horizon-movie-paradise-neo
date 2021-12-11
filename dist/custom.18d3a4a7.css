@@ -11176,7 +11176,7 @@ body {
 }
 
 .container-form-details {
-  width: 300px;
+  width: 350px;
 }
 
 .input-field-details {
@@ -11184,7 +11184,7 @@ body {
   margin: 5px 0px;
   background-color: #1A201C;
   border-width: 0px;
-  border-radius: 10px;
+  border-radius: 15px;
   text-align: center;
   padding: 15px 0px;
 }
@@ -11201,6 +11201,13 @@ body {
 #Login_body {
   background: url("/login_bg_shot.4c1d3cca.png");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}
+@media (max-width: 1220px) {
+  #Login_body {
+    background: #0A100C;
+  }
 }
 
 .title-login {
@@ -11211,7 +11218,7 @@ body {
 
 .btn-submit {
   background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
-  margin: 20px 0px;
+  margin: 20px 0px 5px 0px;
   padding: 15px 45px;
   text-align: center;
   transition: 0.5s;
@@ -11228,6 +11235,13 @@ body {
   /* change the direction of the change here */
   color: aliceblue;
   text-decoration: none;
+}
+
+.features {
+  color: #B7B5B9;
+  font-size: 10px;
+  margin: 0px;
+  padding: 0px;
 }
 
 /*# sourceMappingURL=/custom.18d3a4a7.css.map */
