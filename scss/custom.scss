@@ -4,6 +4,7 @@ $body-bg : #0A100C;
 
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 body{
     overflow-x: hidden;
 }
@@ -58,9 +59,58 @@ body{
 }
 
 // Forms
+.container-form-details{
+    width: 300px ;
+}
 
-.input-field{
+.input-field-details{
     color: aliceblue;
     margin: 5px 0px;
     background-color: #1A201C;
+    border-width: 0px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px 0px;
+
 }
+
+// Main Section ******************
+.main-section-container{
+    display: flex;
+    position: absolute; 
+    left: 0%; 
+    right: 0%; 
+    top: 0%;
+    bottom: 0%;
+}
+
+#Login_body{
+    background: url("../assets/login_bg_shot.png");
+    background-size: cover;
+}
+
+.title-login{
+    color: aliceblue;
+    font-size: 20px;
+    margin: 20px 0px;
+}
+.btn-submit{
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+    margin: 20px 0px;
+    padding: 15px 45px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 20px;
+    border-width: 0px;
+    display: block;
+    color: aliceblue;
+    font-family: 'Satisfy', "cursive";
+}
+
+.btn-submit:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: aliceblue;
+    text-decoration: none;
+  }
+ 

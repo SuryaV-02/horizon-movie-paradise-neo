@@ -122,7 +122,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\assets\\poster_college_cropped.png":[["poster_college_cropped.df0e61ae.png","../assets/poster_college_cropped.png"],"../assets/poster_college_cropped.png"],"_css_loader":"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\assets\\poster_college_cropped.png":[["poster_college_cropped.df0e61ae.png","../assets/poster_college_cropped.png"],"../assets/poster_college_cropped.png"],"./..\\assets\\login_bg_shot.png":[["login_bg_shot.4c1d3cca.png","../assets/login_bg_shot.png"],"../assets/login_bg_shot.png"],"_css_loader":"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
