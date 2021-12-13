@@ -184,4 +184,17 @@ textarea:focus, input:focus {
     margin: 0px;
     padding: 0px;
 }
- 
+
+// tile movie card
+.tile-card{
+    border-radius: 15px;
+}
+.tile-title{
+    font-size: 20px;
+}
+.tile-desc{
+    font-size: 10px;
+}
+.container-poster-img{
+    border-radius: 15px 15px 0px 0px;
+}

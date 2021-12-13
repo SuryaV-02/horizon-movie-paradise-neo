@@ -11315,4 +11315,20 @@ textarea:focus, input:focus {
   padding: 0px;
 }
 
+.tile-card {
+  border-radius: 15px;
+}
+
+.tile-title {
+  font-size: 20px;
+}
+
+.tile-desc {
+  font-size: 10px;
+}
+
+.container-poster-img {
+  border-radius: 15px 15px 0px 0px;
+}
+
 /*# sourceMappingURL=/custom.18d3a4a7.css.map */
