@@ -11130,6 +11130,23 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+input {
+  color: aliceblue;
+}
+
+textarea:focus, input:focus {
+  color: #ff0000;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 .header-title {
   font-family: "Slabo 27px", serif;
   letter-spacing: 10px;
@@ -11156,6 +11173,20 @@ body {
   border-radius: 30px;
 }
 
+.search-bar-input-results {
+  background-color: aliceblue;
+  border-radius: 30px;
+  border: none;
+  height: 50px;
+}
+
+.container-search-bar-results {
+  background-color: aliceblue;
+  border-radius: 30px;
+  width: 500px;
+  height: 50px;
+}
+
 .container-poster {
   position: absolute;
   bottom: 0px;
@@ -11177,6 +11208,12 @@ body {
 
 .container-form-details {
   width: 350px;
+  color: aliceblue;
+}
+@media (max-width: 450px) {
+  .container-form-details {
+    width: 300px;
+  }
 }
 
 .input-field-details {
@@ -11186,7 +11223,7 @@ body {
   border-width: 0px;
   border-radius: 15px;
   text-align: center;
-  padding: 15px 0px;
+  padding: 5px 0px;
 }
 
 .main-section-container {
@@ -11199,7 +11236,7 @@ body {
 }
 
 #Login_body {
-  background: url("/login_bg_shot.4c1d3cca.png");
+  background: url("/login_bg_shot.4c1d3cca.png"), #0A100C;
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: content-box;

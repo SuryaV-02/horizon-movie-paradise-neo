@@ -8,6 +8,22 @@ $body-bg : #0A100C;
 body{
     overflow-x: hidden;
 }
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+input{
+    color: aliceblue;
+}
+textarea:focus, input:focus {
+    color: #ff0000;
+}
+
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
 // Body
 
 
@@ -40,6 +56,19 @@ body{
     border-radius: 30px;
 }
 
+.search-bar-input-results{
+    background-color: aliceblue;
+    border-radius: 30px;
+    border: none;
+    height: 50px;
+}
+.container-search-bar-results{
+    background-color: aliceblue;
+    border-radius: 30px;
+    width: 500px;
+    height: 50px;
+}
+
 // Poster
 .container-poster{
     position: absolute;
@@ -61,6 +90,10 @@ body{
 // Forms
 .container-form-details{
     width: 350px ;
+    color: aliceblue;
+    @media (max-width:450px) {
+        width: 300px;
+    }
 }
 
 .input-field-details{
@@ -70,7 +103,7 @@ body{
     border-width: 0px;
     border-radius: 15px;
     text-align: center;
-    padding: 15px 0px;
+    padding: 5px 0px;
 
 }
 
@@ -85,7 +118,7 @@ body{
 }
 
 #Login_body{
-    background: url("../assets/login_bg_shot.png");
+    background: url("../assets/login_bg_shot.png"), #0A100C;;
     background-size: cover;
     background-repeat: no-repeat;
     background-clip: content-box;
