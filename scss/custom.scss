@@ -17,7 +17,7 @@ input{
     color: aliceblue;
 }
 textarea:focus, input:focus {
-    color: #ff0000;
+    outline: none;
 }
 
 
@@ -56,18 +56,43 @@ textarea:focus, input:focus {
     border-radius: 30px;
 }
 
-.search-bar-input-results{
-    background-color: aliceblue;
-    border-radius: 30px;
-    border: none;
-    height: 50px;
-}
 .container-search-bar-results{
     background-color: aliceblue;
     border-radius: 30px;
     width: 500px;
     height: 50px;
+    @media (max-width : 650px) {
+        width: 450px;
+    }
+    @media (max-width : 475px) {
+        width: 250px;
+        padding: 0px 10px;
+    }
 }
+.container-search-bar-index{
+    background-color: aliceblue;
+    border-radius: 30px;
+    width: 800px;
+    height: 50px;
+    @media (max-width : 900px) {
+        width: 600px;
+    }
+    @media (max-width : 650px) {
+        width: 450px;
+    }
+    @media (max-width : 475px) {
+        width: 250px;
+        padding: 0px 10px;
+    }
+    
+}
+.search-bar-input{
+    background-color: aliceblue;
+    border-radius: 30px;
+    border: none;
+    height: 50px;
+}
+
 
 // Poster
 .container-poster{

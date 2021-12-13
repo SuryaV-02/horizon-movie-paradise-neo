@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/custom.18d3a4a7.css">
 
-<script src="/custom.18d3a4a7.js"></script></head>
+<script src="/custom.18d3a4a7.js"></script><script src="/login.js"></script></head>
 
 <body>
   <script src="/src.e31bb0bc.js"></script>
   <div class="d-flex flex-row-reverse">
     <div class="user-icon-utils-container d-none pt-3 pe-3  d-sm-block d-flex align-items-center">
-      <a href="/search_results.html">
+      <a href="/login.html">
         <div class="container-login-icon d-flex justify-content-center align-items-center ">
           <i class="bi bi-person-fill" style="color: aliceblue;"></i>
         </div>
@@ -20,17 +20,22 @@
     </div>
   </div>
 
-  <div class="container-main mt-5">
+  <div class="container-main mt-5 d-flex flex-column justify-content align-items-center">
     <div class="container container-title d-flex justify-content-center col-sm-11 col-10">
       <div class="d-flex flex-column align-items-center">
         <span class="display-6 header-title">Horizon</span>
         <span class="header-captions my-0 py-0">Your movie destination</span>
       </div>
     </div>
-    <form>
-      <div class="row d-flex justify-content-center container-search-bar mt-3">
-        <input type="Text" placeholder="Search in 10 million movies" class="col-8 search-bar px-5">
-        <!-- <button style="width: 50px; height: inherit;"><i class="bi bi-search"></i></button> -->
+    <form id="form-query" action="./search_results.html">
+      <div class="input-group d-inline-flex justify-content-center align-items-center container-search-bar-index mt-3">
+        <div class="d-flex justify-content-center align-items-center col-1">
+          <i class="bi bi-search"></i>
+        </div>
+        <input type="text" placeholder="Search in 10 million movies" id="input-query-field" class="col-10 text-black  search-bar-input px-5">
+        <div class="d-flex justify-content-center align-items-center col-1">
+          <i class="bi bi-dice-5"></i>
+        </div>
       </div>
     </form>
   </div>
