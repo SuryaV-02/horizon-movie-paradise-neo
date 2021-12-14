@@ -5,3 +5,12 @@ $("#input-query-field").keypress(function(event){
         $("#form-query").submit();
     }
 });
+
+function NavigateAsFresh(){   
+    window.location.replace('your link');
+   return false;
+}
+
+function test(){
+    alert();
+}
