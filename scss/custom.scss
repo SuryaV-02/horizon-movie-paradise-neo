@@ -20,6 +20,8 @@ input{
 }
 textarea:focus, input:focus {
     outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 
@@ -208,6 +210,20 @@ textarea:focus, input:focus {
         height: 220px;
     }
 }
+.tile-card-container{
+    border-radius: 15px;
+    overflow: hidden; 
+    width: 220px; 
+    background-color: #EAEAEA;
+    margin: 10px;
+    @media (max-width : 950px) {
+        width: 150px;
+        height: 220px;
+    }
+}
+// .tile-card  :hover{
+//     display: none;
+// }
 .tile-title{
     font-size: 20px;
 }
@@ -268,3 +284,47 @@ textarea:focus, input:focus {
     animation: effect 3s linear infinite;
     font-weight: 550;
 }
+
+// movie_details
+
+h1{
+    font-family: 'Slabo 13px', serif;
+    color: #FFFFFF;
+}
+
+h3{
+    font-family: 'Slabo 13px', serif;
+    color: #FFFFFF;
+}
+
+#movie_desc{
+    text-justify: inter-word;
+    color: #FFFFFF;
+}
+
+div{
+    color: #FFFFFF;
+}
+
+i{
+    color: yellow;
+}
+
+.card{
+    background: #1A201C;
+}
+
+#card-review-input {
+    background: #1A201C;
+    color: #FFFFFF;
+}
+
+
+.form-control{
+    border-radius: 15px;
+}
+
+.post-review{
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+}
+
