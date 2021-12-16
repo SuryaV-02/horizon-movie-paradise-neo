@@ -8166,19 +8166,23 @@ function test() {
 }
 
 window.onload = function () {
-  var anchors = document.getElementsByClassName('container-for-click d-inline-flex');
+  var anchors = document.getElementsByClassName('click-movie-details');
 
   for (var i = 0; i < anchors.length; i++) {
     var anchor = anchors[i];
 
     anchor.onclick = function () {
-      alert('ho ho ho');
+      openPage('md');
     };
   }
 };
 
 function openPage(id) {
-  window.open('./movie_details.html');
+  if (id == 'md') {
+    window.open('movie_details.html');
+  } else if (id == "lg") {
+    window.open('login.html');
+  }
 }
 
 $("#input-query-field").keypress(function (event) {
@@ -8215,7 +8219,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10332" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12189" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

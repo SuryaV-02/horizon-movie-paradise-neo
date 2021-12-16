@@ -203,7 +203,7 @@ textarea:focus, input:focus {
     border-radius: 15px;
     overflow: hidden; 
     width: 220px; 
-    background-color: #EAEAEA;
+    background-color: #EAEAEA !important;
     margin: 10px;
     @media (max-width : 950px) {
         width: 150px;
@@ -226,9 +226,11 @@ textarea:focus, input:focus {
 // }
 .tile-title{
     font-size: 20px;
+    color: black;
 }
 .tile-desc{
     font-size: 10px;
+    color: black;
 }
 .container-poster-img{
     width: 230px; 
@@ -286,45 +288,20 @@ textarea:focus, input:focus {
 }
 
 // movie_details
-
-h1{
-    font-family: 'Slabo 13px', serif;
-    color: #FFFFFF;
-}
-
-h3{
-    font-family: 'Slabo 13px', serif;
-    color: #FFFFFF;
-}
-
-#movie_desc{
-    text-justify: inter-word;
-    color: #FFFFFF;
-}
-
-div{
-    color: #FFFFFF;
-}
-
-i{
-    color: yellow;
-}
-
-.card{
+.review-card{
     background: #1A201C;
 }
 
-#card-review-input {
-    background: #1A201C;
-    color: #FFFFFF;
-}
-
-
-.form-control{
-    border-radius: 15px;
-}
-
-.post-review{
+.btn-post{
     background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+    margin: 20px 0px 5px 0px;
+    padding: 10px 20px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 20px;
+    border-width: 0px;
+    display: block;
+    color: aliceblue;
+    font-family: 'Satisfy', "cursive";
 }
-
