@@ -5,6 +5,8 @@ $body-bg : #0A100C;
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+
 body{
     overflow-x: hidden;
 }
@@ -142,6 +144,15 @@ textarea:focus, input:focus {
     bottom: 0%;
 }
 
+.main-section-container-non-abs{
+    display: flex;
+    
+    left: 0%; 
+    right: 0%; 
+    top: 0%;
+    bottom: 0%;   
+}
+
 #Login_body{
     background: url("../assets/login_bg_shot.png"), #0A100C;;
     background-size: cover;
@@ -225,4 +236,35 @@ textarea:focus, input:focus {
         height: 200px;
         margin: -40px 0px -10px 0px; 
     }
+}
+
+// 
+
+.txt-registration-success-head{
+    color: aliceblue;
+    font-size: 15px;
+}
+.txt-registration-success-main{
+    color: aliceblue;
+    font-size: 30px;
+}
+
+
+@keyframes effect {
+    0%{background-image: linear-gradient(to right, #8E54E9  51%, #4776E6  100%);}
+    25%{background-image: linear-gradient(to top, #8E54E9  51%, #4776E6  100%);}
+    50%{background-image: linear-gradient(to left, #8E54E9  51%, #4776E6  100%);}
+    25%{background-image: linear-gradient(to bottom, #8E54E9  51%, #4776E6  100%);}
+    100%{background-image:linear-gradient(to right,#8E54E9  51%, #4776E6  100%);}
+}
+.txt-registration-success-name{
+    font-size: 40px;
+    background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    font-family: 'Nothing You Could Do', cursive;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    animation: effect 3s linear infinite;
+    font-weight: 550;
 }
