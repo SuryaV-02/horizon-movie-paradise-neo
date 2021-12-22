@@ -28,9 +28,10 @@ function openPage(id){
     }
 }
 
-$("#input-query-field").keypress(function(event){
-    if(event.which == 13){
-        event.preventDefault();
-        $("#form-query").submit();
-    }
-});
+// $("#input-query-field").keypress(function(event){
+//     if(event.which == 13){
+//         event.preventDefault();
+//         $("#form-query").submit();
+//     }
+// });
+
