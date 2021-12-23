@@ -56,9 +56,10 @@ function signin_user_account(_email, _password) {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log("Welcome" + user.email)
+                console.log("Welcome" + user.uid)
                 // ...
                 console.log("SUCCESS : Account Creation")
+                // window.open("./registration_success.html");
             })
             .catch((error) => {
                 const errorCode = error.code;
