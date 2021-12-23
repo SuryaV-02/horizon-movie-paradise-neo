@@ -30,44 +30,49 @@
         <div class="container-form container d-flex justify-content-center mt-5">
             <div class="form d-flex flex-column justify-content-center align-items-center">
                 <span class="title-login">LOGIN</span>
-                
-                    <div class="d-flex flex-column container-form-details align-items-center">
-                        <div class="input-group input-field-details d-flex justify-content-center">
-                            <input id="ipt_email" class="text-white col-10 text-center input-field-details" type="text" value="suryaedu71@gmail.com" placeholder="Username" style="background-color: #1A201C; border: none; outline: none;">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="bi bi-person-fill"></i>
-                            </div>
-                        </div>
-                        <div class="input-group input-field-details d-flex justify-content-center">
-                            <input id="ipt_password" class="text-white col-10 text-center input-field-details" type="password" value="123456789" placeholder="Password" style="background-color: #1A201C; border: none; outline: none;">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="bi bi-eye-fill col-2"></i>
-                            </div>
-                        </div>
 
-                        <!-- <div class="input-group">
+                <div class="d-flex flex-column container-form-details align-items-center">
+                    <div class="input-group input-field-details d-flex justify-content-center">
+                        <input id="ipt_email" class="text-white col-10 text-center input-field-details" type="text" value="suryaedu71@gmail.com" placeholder="Username" style="background-color: #1A201C; border: none; outline: none;">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                    </div>
+                    <div class="input-group input-field-details d-flex justify-content-center">
+                        <input id="ipt_password" class="text-white col-10 text-center input-field-details" type="password" value="123456789" placeholder="Password" style="background-color: #1A201C; border: none; outline: none;">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="bi bi-eye-fill col-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- <div class="input-group">
                                 <input type="password" id="password"  class="text-white form-control rounded-right" required>
                                 <button id="toggle-password" type="button" class="d-none"
                                   aria-label="Show password as plain text. Warning: this will display your password on the screen.">
                                 </button>
                               </div> -->
-                        <Button id="btn_submit" class="btn-submit" style="width: 250px;">SIgn in</Button>
-                        <div class="row">
-                            <p class="features">
-                                <span id="feature-forgot-password" class="feature"><a href="#">Forgot
-                                        Password</a></span>
-                                <span class="feature">|</span>
-                                <span id="feature-forgot-password" class="feature"><a href="/register.html">Sign up</a></span>
-                            </p>
-                        </div>
+                    <div class="row" id="div-alert-login">
+                        <p style="color: crimson; font-size: 10px;">Please Enter All the details</p>
+                    </div>
+                    <Button id="btn_submit" class="btn-submit" style="width: 250px;">Sign in</Button>
+                    <div class="row">
+                        <p class="features">
+                            <span id="feature-forgot-password" class="feature"><a href="#">Forgot
+                                    Password</a></span>
+                            <span class="feature">|</span>
+                            <span id="feature-forgot-password" class="feature"><a href="/register.html">Sign
+                                    up</a></span>
+                        </p>
                     </div>
 
-                
+                </div>
+
+
             </div>
 
         </div>
     </div>
-<script src="/firebase.512978bf.js"></script>
+    <script src="/firebase.512978bf.js"></script>
 </body>
 
 </html>

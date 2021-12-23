@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
+
+$("#div-alert-login").hide()
+$("#div-alert-register").hide()
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,10 +27,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-$("#btn_submit").click(function () {
-    var _email = $("#ipt_email").val();
-    var _password = $("#ipt_password").val();
-
+function create_user_account(_email, _password) {
     if (_email != "" && _password != "") {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, _email, _password)
@@ -33,8 +35,8 @@ $("#btn_submit").click(function () {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
-                
                 // ...
+                console.log("SUCCESS : Account Creation")
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -44,5 +46,56 @@ $("#btn_submit").click(function () {
 
     } else {
         window.alert("Enter all detailz");
+    }
+}
+
+function signin_user_account(_email, _password) {
+    if (_email != "" && _password != "") {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, _email, _password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log("Welcome" + user.email)
+                // ...
+                console.log("SUCCESS : Account Creation")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+
+    } else {
+        $("#div-alert-login").show();
+    }
+}
+
+$("#btn_submit").click(function () {
+    var _email = $("#ipt_email").val();
+    var _password = $("#ipt_password").val();
+    signin_user_account(_email, _password)
+
+})
+
+$("#btn_register").click(function () {
+    var _name = $("#ipt_reg_name").val();
+    var _email = $("#ipt_reg_email").val();
+    var _dob = $("#ipt_reg_dob").val();
+    var _password = $("#ipt_reg_password").val();
+    var _password_conf = $("#ipt_reg_password_conf").val();
+    let uid = (Math.random() + 1).toString(36).substring(2);
+
+    if (_name != "" && _email != "" && _dob != "" && _password != "" && _password_conf != "" && _password === _password_conf) {
+        const db = getDatabase();
+        set(ref(db, 'users/' + uid), {
+            username: _name,
+            email: _email,
+            dob: _dob
+        });
+        console.log("SUCCESS : Registration")
+        create_user_account(_email, _password);
+    } else {
+        $("#div-alert-register").show()
     }
 })
