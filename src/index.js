@@ -34,3 +34,4 @@ $("#input-query-field").keypress(function(event){
         $("#form-query").submit();
     }
 });
+
