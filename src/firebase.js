@@ -27,29 +27,13 @@ $("#btn_submit").click(function () {
     var _password = $("#ipt_password").val();
 
     if (_email != "" && _password != "") {
-        // var result = firebase.auth().signInWithEmailAndPassword(_email,_password);
-        // result.catch(function(error){
-        //     var err_code = error.code;
-        //     var errorMessage = error.message;
-        //     console.log(err_code + " " + errorMessage);
-        //     window.alert("Errow occured")
-        // });
-        // firebase.auth().signInWithEmailAndPassword(_email, _password)
-        //     .then((userCredential) => {
-        //         // Signed in
-        //         var user = userCredential.user;
-        //         // ...
-        //     })
-        //     .catch((error) => {
-        //         var errorCode = error.code;
-        //         var errorMessage = error.message;
-        //     });
-
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, _email, _password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                console.log(user)
+                
                 // ...
             })
             .catch((error) => {
