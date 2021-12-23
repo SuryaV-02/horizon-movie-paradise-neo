@@ -1,0 +1,1 @@
+{"version":3,"sources":["login.js"],"names":["window","alert","test"],"mappings":"AAAAA,MAAM,CAACC,KAAP,CAAa,UAAb;;AAEA,SAASC,IAAT,GAAe;AACXF,EAAAA,MAAM,CAACC,KAAP,CAAa,cAAb;AACH","file":"login.5087793e.js","sourceRoot":"..\\src","sourcesContent":["window.alert(\"Login.js\")\r\n\r\nfunction test(){\r\n    window.alert(\"Test success\");\r\n}"]}

@@ -35,3 +35,6 @@ function openPage(id){
 //     }
 // });
 
+function login(){
+    alert("SriKalahasthi!");
+}
