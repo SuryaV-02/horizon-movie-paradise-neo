@@ -36110,9 +36110,9 @@ function signin_user_account(_email, _password) {
     (0, _auth.signInWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
-      console.log("Welcome" + user.uid); // ...
-
-      console.log("SUCCESS : Account Creation"); // window.open("./registration_success.html");
+      console.log("Welcome " + user.uid + user.displayName); // ...
+      // console.log("SUCCESS : Account Creation")
+      // window.open("./registration_success.html");
     }).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message; // ..
@@ -36151,6 +36151,7 @@ $("#btn_register").click(function () {
     });
     console.log("SUCCESS : Registration");
     create_user_account(_email, _password);
+    window.open("registration_success.html", _name);
   } else {
     $("#div-alert-register").show();
   }
@@ -36183,7 +36184,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6460" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3671" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

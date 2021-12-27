@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../scss/custom.scss">
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
@@ -29,14 +29,15 @@
     <div class="main-section-container-non-abs">
         <div class="container-form container d-flex justify-content-center mt-5">
             <div class="form d-flex flex-column align-items-center" style="line-height: 1.2;">
-                <p class="txt-registration-success-name"><span class="txt-registration-success-name-value" >Sara Adithi</span></p>
+                <p class="txt-registration-success-name" id="user-name"><span class="txt-registration-success-name-value" >Sara Adithi</span></p>
                 <p class="txt-registration-success-head">Welcome to the community</p>
                 <p class="txt-registration-success-main">You're in!</p>
-                <button class="btn-submit w-100" onclick="openPage('lg')">Sign in</button>
+                <button class="btn-submit w-100" id="sign-in-rs">Sign in</button>
             </div>
         </div>
     </div>
     <script src="./index.js"></script>
+    <script src="registration_success.js"></script>
     <script src="./firebase.js"></script>
 </body>
 

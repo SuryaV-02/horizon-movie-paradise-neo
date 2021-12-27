@@ -7,11 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/custom.18d3a4a7.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
 </head>
 
 <body id="Login_body">
-    <script src="/src.e31bb0bc.js"></script>
-
     <div class="container-main mt-5">
         <div class="container container-title d-flex justify-content-center col-sm-11 col-10">
             <div class="d-flex flex-column align-items-center">
@@ -24,15 +29,16 @@
     <div class="main-section-container-non-abs">
         <div class="container-form container d-flex justify-content-center mt-5">
             <div class="form d-flex flex-column align-items-center" style="line-height: 1.2;">
-                <p class="txt-registration-success-name"><span class="txt-registration-success-name-value">Sara Adithi</span></p>
+                <p class="txt-registration-success-name" id="user-name"><span class="txt-registration-success-name-value">Sara Adithi</span></p>
                 <p class="txt-registration-success-head">Welcome to the community</p>
                 <p class="txt-registration-success-main">You're in!</p>
-                <button class="btn-submit w-100">Sign in</button>
+                <button class="btn-submit w-100" id="sign-in-rs">Sign in</button>
             </div>
-
         </div>
     </div>
-
+    <script src="/src.e31bb0bc.js"></script>
+    <script src="/registration_success.5058fd59.js"></script>
+    <script src="/firebase.512978bf.js"></script>
 </body>
 
 </html>

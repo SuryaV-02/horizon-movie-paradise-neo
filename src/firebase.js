@@ -56,9 +56,9 @@ function signin_user_account(_email, _password) {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log("Welcome" + user.uid)
+                console.log("Welcome " + user.uid + user.displayName)
                 // ...
-                console.log("SUCCESS : Account Creation")
+                // console.log("SUCCESS : Account Creation")
                 // window.open("./registration_success.html");
             })
             .catch((error) => {
@@ -96,6 +96,7 @@ $("#btn_register").click(function () {
         });
         console.log("SUCCESS : Registration")
         create_user_account(_email, _password);
+        window.open("registration_success.html",_name)
     } else {
         $("#div-alert-register").show()
     }

@@ -305,3 +305,48 @@ textarea:focus, input:focus {
     color: aliceblue;
     font-family: 'Satisfy', "cursive";
 }
+
+
+// Profile details
+
+
+.profile-title {
+    font-family: "Slabo 27px", serif;
+    letter-spacing: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+.profile-captions {
+    font-family: "Roboto", sans-serif;
+    color: #5c5c5c;
+    font-size: 18;
+    font-weight: 800;
+}
+
+.btn-signout {
+    background-image: linear-gradient(to right, #16bffd 0%, #cb3066 51%, #16bffd 100%);
+    margin: 20px 0px 5px 0px;
+    padding: 15px 45px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 20px;
+    border-width: 0px;
+    display: block;
+    color: aliceblue;
+    font-family: "Satisfy", "cursive";
+}
+
+.btn-signout:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.img-profile{
+    width: 350px;
+    @media (max-width:575px) {
+        width: 250px;
+    }
+}
