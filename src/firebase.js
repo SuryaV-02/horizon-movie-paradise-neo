@@ -76,6 +76,7 @@ $("#btn_submit").click(function () {
     var _email = $("#ipt_email").val();
     var _password = $("#ipt_password").val();
     signin_user_account(_email, _password)
+    window.open("profile_details.html")
 
 })
 
@@ -95,6 +96,9 @@ $("#btn_register").click(function () {
             dob: _dob
         });
         console.log("SUCCESS : Registration")
+        localStorage.setItem("user_name",_name);
+        localStorage.setItem("user_email",_email);
+        localStorage.setItem("user_dob",_dob);
         create_user_account(_email, _password);
         window.open("registration_success.html",_name)
     } else {

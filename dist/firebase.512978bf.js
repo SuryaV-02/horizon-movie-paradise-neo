@@ -36128,6 +36128,7 @@ $("#btn_submit").click(function () {
   var _password = $("#ipt_password").val();
 
   signin_user_account(_email, _password);
+  window.open("profile_details.html");
 });
 $("#btn_register").click(function () {
   var _name = $("#ipt_reg_name").val();
@@ -36150,6 +36151,9 @@ $("#btn_register").click(function () {
       dob: _dob
     });
     console.log("SUCCESS : Registration");
+    localStorage.setItem("user_name", _name);
+    localStorage.setItem("user_email", _email);
+    localStorage.setItem("user_dob", _dob);
     create_user_account(_email, _password);
     window.open("registration_success.html", _name);
   } else {
@@ -36184,7 +36188,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3819" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

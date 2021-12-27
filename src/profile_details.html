@@ -5,42 +5,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../scss/custom.scss">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
-<body>
-  <script src="./index.js"></script>
-  <div class="d-flex flex-row-reverse">
-    <div class="user-icon-utils-container d-none pt-3 pe-3  d-sm-block d-flex align-items-center">
-      <a href="./login.html">
-        <div class="container-login-icon d-flex justify-content-center align-items-center ">
-          <i class="bi bi-person-fill" style="color: aliceblue;"></i>
+<body id="Login_body">
+    <script src="./index.js"></script>
+    <div class="container-main mt-5">
+        <div class="container container-title d-flex justify-content-center col-sm-11 col-10">
+            <div class="d-flex flex-column align-items-center">
+                <span class="display-6 header-title">Horizon</span>
+                <span class="header-captions my-0 py-0">Your movie destination</span>
+            </div>
         </div>
-      </a>
     </div>
-  </div>
 
-  <div class="container-main mt-5 d-flex flex-column justify-content align-items-center">
-    <div class="container container-title d-flex justify-content-center col-sm-11 col-10">
-      <div class="d-flex flex-column align-items-center">
-        <span class="display-6 header-title">Horizon</span>
-        <span class="header-captions my-0 py-0">Your movie destination</span>
-      </div>
+    <div class="main-section-container">
+        <div class="container-form container d-flex justify-content-center mt-5" >
+            <div class="d-flex flex-column justify-content-center align-items-center mt-5" >
+                <div class="img-container-profile" >
+                    <img src="../assets/def_profile.png" alt="Profile-image" class="img-profile" >
+                </div>
+                <div class="container-main mt-5">
+                    <div class="container container-title d-flex justify-content-center col-sm-12 col-10">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="row px-2">
+                                <span class="profile-title" id="user-name">Allan Menken</span>
+                            </div>
+                            <p ><span class="profile-captions my-0 py-0" id="user-email">alanmenken.a.l@outlook.com</span></p>
+                        </div>
+                    </div>
+                </div>
+                <Button id="btn_register" class="btn-signout" style="width: 250px;">Sign out</Button>
+            </div>
+        </div>
     </div>
-    <form id="form-query" action="./search_results.html">
-      <div class="input-group d-inline-flex justify-content-center align-items-center container-search-bar-index mt-3">
-        <div class="d-flex justify-content-center align-items-center col-1">
-          <i class="bi bi-search"></i>
-        </div>
-        <input type="text" placeholder="Search in 10 million movies" id="input-query-field" class="col-10 text-black  search-bar-input px-5">
-        <div class="d-flex justify-content-center align-items-center col-1">
-          <i class="bi bi-dice-5"></i>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <div class="container-fluid container-poster">
-  </div>
-  <script src="./firebase.js"></script>
+    <script src="./firebase.js"></script>
+    <script src="./profile_details.js"> </script>
 </body>
-
-</html>
