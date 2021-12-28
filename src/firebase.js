@@ -62,8 +62,10 @@ function signin_user_account(_email, _password) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log("Welcome " + user.uid + user.displayName)
-                localStorage.setItem("user_name",_name);
+                // localStorage.setItem("user_name",_name);
                 localStorage.setItem("user_email",_email);
+                window.open("profile_details.html", "_self")
+                localStorage.setItem("uid",user.uid)
                 // ...
                 // console.log("SUCCESS : Account Creation")
                 // window.open("./registration_success.html");
@@ -72,6 +74,8 @@ function signin_user_account(_email, _password) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // ..
+                console.log(errorCode + " : " + errorMessage)
+                alert("Error in signing inside!!");
             });
 
     } else {
@@ -117,7 +121,6 @@ $("#btn_submit").click(function () {
     var _email = $("#ipt_email").val();
     var _password = $("#ipt_password").val();
     signin_user_account(_email, _password)
-    window.open("profile_details.html", "_self")
 
 })
 

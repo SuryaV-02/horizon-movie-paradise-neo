@@ -36114,14 +36114,19 @@ function signin_user_account(_email, _password) {
     (0, _auth.signInWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
-      console.log("Welcome " + user.uid + user.displayName);
-      localStorage.setItem("user_name", _name);
-      localStorage.setItem("user_email", _email); // ...
+      console.log("Welcome " + user.uid + user.displayName); // localStorage.setItem("user_name",_name);
+
+      localStorage.setItem("user_email", _email);
+      window.open("profile_details.html", "_self");
+      localStorage.setItem("uid", user.uid); // ...
       // console.log("SUCCESS : Account Creation")
       // window.open("./registration_success.html");
     }).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message; // ..
+
+      console.log(errorCode + " : " + errorMessage);
+      alert("Error in signing inside!!");
     });
   } else {
     $("#div-alert-login").show();
@@ -36164,7 +36169,6 @@ $("#btn_submit").click(function () {
   var _password = $("#ipt_password").val();
 
   signin_user_account(_email, _password);
-  window.open("profile_details.html", "_self");
 });
 $("#btn_register").click(function () {
   var _name = $("#ipt_reg_name").val();
@@ -36236,7 +36240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5350" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7880" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
