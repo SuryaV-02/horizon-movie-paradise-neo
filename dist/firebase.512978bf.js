@@ -36110,7 +36110,8 @@ function signin_user_account(_email, _password) {
     (0, _auth.signInWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
-      console.log("Welcome " + user.uid + user.displayName); // ...
+      console.log("Welcome " + user.uid + user.displayName); // localStorage.setItem("login_user_name",_name);
+      // ...
       // console.log("SUCCESS : Account Creation")
       // window.open("./registration_success.html");
     }).catch(function (error) {
@@ -36128,7 +36129,7 @@ $("#btn_submit").click(function () {
   var _password = $("#ipt_password").val();
 
   signin_user_account(_email, _password);
-  window.open("profile_details.html");
+  window.open("profile_details.html", "_self");
 });
 $("#btn_register").click(function () {
   var _name = $("#ipt_reg_name").val();
@@ -36139,9 +36140,10 @@ $("#btn_register").click(function () {
 
   var _password = $("#ipt_reg_password").val();
 
-  var _password_conf = $("#ipt_reg_password_conf").val();
+  var _password_conf = $("#ipt_reg_password_conf").val(); // let uid = (Math.random() + 1).toString(36).substring(2);
 
-  var uid = (Math.random() + 1).toString(36).substring(2);
+
+  create_user_account(_email, _password);
 
   if (_name != "" && _email != "" && _dob != "" && _password != "" && _password_conf != "" && _password === _password_conf) {
     var db = (0, _database.getDatabase)();
@@ -36154,7 +36156,6 @@ $("#btn_register").click(function () {
     localStorage.setItem("user_name", _name);
     localStorage.setItem("user_email", _email);
     localStorage.setItem("user_dob", _dob);
-    create_user_account(_email, _password);
     window.open("registration_success.html", _name);
   } else {
     $("#div-alert-register").show();
@@ -36188,7 +36189,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3819" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10014" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

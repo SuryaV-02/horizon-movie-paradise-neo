@@ -57,6 +57,7 @@ function signin_user_account(_email, _password) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log("Welcome " + user.uid + user.displayName)
+                // localStorage.setItem("login_user_name",_name);
                 // ...
                 // console.log("SUCCESS : Account Creation")
                 // window.open("./registration_success.html");
@@ -76,7 +77,7 @@ $("#btn_submit").click(function () {
     var _email = $("#ipt_email").val();
     var _password = $("#ipt_password").val();
     signin_user_account(_email, _password)
-    window.open("profile_details.html")
+    window.open("profile_details.html","_self")
 
 })
 
@@ -86,8 +87,8 @@ $("#btn_register").click(function () {
     var _dob = $("#ipt_reg_dob").val();
     var _password = $("#ipt_reg_password").val();
     var _password_conf = $("#ipt_reg_password_conf").val();
-    let uid = (Math.random() + 1).toString(36).substring(2);
-
+    // let uid = (Math.random() + 1).toString(36).substring(2);
+    create_user_account(_email, _password);
     if (_name != "" && _email != "" && _dob != "" && _password != "" && _password_conf != "" && _password === _password_conf) {
         const db = getDatabase();
         set(ref(db, 'users/' + uid), {
@@ -99,7 +100,6 @@ $("#btn_register").click(function () {
         localStorage.setItem("user_name",_name);
         localStorage.setItem("user_email",_email);
         localStorage.setItem("user_dob",_dob);
-        create_user_account(_email, _password);
         window.open("registration_success.html",_name)
     } else {
         $("#div-alert-register").show()
