@@ -5,8 +5,8 @@ $("#div-alert-register").hide()
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword ,signOut } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getDatabase, ref, set, onValue, snapshot } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -61,7 +61,11 @@ function signin_user_account(_email, _password) {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log("Welcome " + user.uid + user.displayName)
+                const uid = user.uid
+                console.log("Welcome " + uid + user.displayName)
+                get_user_details_from_database(uid)
+
+                window.open("profile_details.html", "_self")
                 // localStorage.setItem("login_user_name",_name);
                 // ...
                 // console.log("SUCCESS : Account Creation")
@@ -78,12 +82,25 @@ function signin_user_account(_email, _password) {
     }
 }
 
+function get_user_details_from_database(uid) {
+    console.log("ENTERING")
+    const db = getDatabase();
+    const starCountRef = ref(db, 'users/' +uid);
+    onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        // updateStarCount(postElement, data);
+        localStorage.setItem("user_name", data.username)
+        localStorage.setItem("user_email", data.email)
+        localStorage.setItem("user_dob", data.dob)
+        localStorage.setItem("udi", uid)
+        console.log(data)
+    })
+}
+
 $("#btn_submit").click(function () {
     var _email = $("#ipt_email").val();
     var _password = $("#ipt_password").val();
     signin_user_account(_email, _password)
-    window.open("profile_details.html", "_self")
-
 })
 
 $("#btn_register").click(function () {
@@ -113,7 +130,7 @@ $("#btn_register").click(function () {
     }
 })
 
-$("#btn_signout").click(function(){
+$("#btn_signout").click(function () {
     logout()
 });
 
@@ -143,9 +160,14 @@ function logout() {
     signOut(auth).then(() => {
         window.alert("Logged out successfully")
         location.replace('index.html')
+        localStorage.setItem("user_name", "No-user")
+        localStorage.setItem("user_email", "nothing@gmail.com")
+        localStorage.setItem("user_dob", "00-00-00")
+        localStorage.setItem("udi", "empty")
         // Sign-out successful.
     }).catch((error) => {
         window.alert(error.code + " " + error.message)
         // An error happened.
     });
 }
+

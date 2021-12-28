@@ -36114,7 +36114,10 @@ function signin_user_account(_email, _password) {
     (0, _auth.signInWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
-      console.log("Welcome " + user.uid + user.displayName); // localStorage.setItem("login_user_name",_name);
+      var uid = user.uid;
+      console.log("Welcome " + uid + user.displayName);
+      get_user_details_from_database(uid);
+      window.open("profile_details.html", "_self"); // localStorage.setItem("login_user_name",_name);
       // ...
       // console.log("SUCCESS : Account Creation")
       // window.open("./registration_success.html");
@@ -36127,13 +36130,27 @@ function signin_user_account(_email, _password) {
   }
 }
 
+function get_user_details_from_database(uid) {
+  console.log("ENTERING");
+  var db = (0, _database.getDatabase)();
+  var starCountRef = (0, _database.ref)(db, 'users/' + uid);
+  (0, _database.onValue)(starCountRef, function (snapshot) {
+    var data = snapshot.val(); // updateStarCount(postElement, data);
+
+    localStorage.setItem("user_name", data.username);
+    localStorage.setItem("user_email", data.email);
+    localStorage.setItem("user_dob", data.dob);
+    localStorage.setItem("udi", uid);
+    console.log(data);
+  });
+}
+
 $("#btn_submit").click(function () {
   var _email = $("#ipt_email").val();
 
   var _password = $("#ipt_password").val();
 
   signin_user_account(_email, _password);
-  window.open("profile_details.html", "_self");
 });
 $("#btn_register").click(function () {
   var _name = $("#ipt_reg_name").val();
@@ -36189,7 +36206,11 @@ function logout() {
   var auth = (0, _auth.getAuth)();
   (0, _auth.signOut)(auth).then(function () {
     window.alert("Logged out successfully");
-    location.replace('index.html'); // Sign-out successful.
+    location.replace('index.html');
+    localStorage.setItem("user_name", "No-user");
+    localStorage.setItem("user_email", "nothing@gmail.com");
+    localStorage.setItem("user_dob", "00-00-00");
+    localStorage.setItem("udi", "empty"); // Sign-out successful.
   }).catch(function (error) {
     window.alert(error.code + " " + error.message); // An error happened.
   });
@@ -36222,7 +36243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
