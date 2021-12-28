@@ -97,7 +97,7 @@ function get_user_details_from_database(uid) {
             localStorage.setItem("user_name", data.username)
             localStorage.setItem("user_email", data.email)
             localStorage.setItem("user_dob", data.dob)
-            localStorage.setItem("udi", uid)
+            localStorage.setItem("uid", uid)
             console.log(data)
             resolve()
         })
@@ -127,7 +127,6 @@ $("#btn_register").click(function () {
                     .catch(function (flag) {
                         alert("We cannot register you at this moment..");
                     })
-
             })
             .catch(function (err) {
                 console.log("Returned with empty uid! ", err)
@@ -140,6 +139,17 @@ $("#btn_register").click(function () {
 $("#btn_signout").click(function () {
     logout()
 });
+
+$('#btn_user_icon').click(function(){
+    const auth = getAuth()
+    const user = auth.currentUser;
+    const local_uid = localStorage.uid;
+    if(local_uid==="empty"){
+        window.open("login.html","_self")    
+    }else{
+        window.open("profile_details.html","_self"); 
+    }
+})
 
 function add_user_to_database(_name, _email, _dob, uid) {
     return new Promise(function (resolve, reject) {
@@ -172,7 +182,6 @@ function logout() {
         localStorage.setItem("user_dob", "00-00-00")
         localStorage.setItem("uid", "empty")
         var user = auth.currentUser;
-        alert(user)
         console.log("?? -> " + user)
         // Sign-out successful.
     }).catch((error) => {
