@@ -114,10 +114,7 @@ $("#btn_register").click(function () {
 })
 
 function add_user_to_database(_name, _email, _dob, uid) {
-
-
     return new Promise(function (resolve, reject) {
-
         const db = getDatabase();
         set(ref(db, 'users/' + uid), {
             username: _name,
@@ -134,9 +131,5 @@ function add_user_to_database(_name, _email, _dob, uid) {
                 console.log(error)
                 reject()
             })
-
-
     });
-
-
 }

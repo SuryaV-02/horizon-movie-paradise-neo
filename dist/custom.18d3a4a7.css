@@ -11401,7 +11401,7 @@ textarea:focus, input:focus {
 
 .txt-registration-success-main {
   color: aliceblue;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 @keyframes effect {
@@ -11422,14 +11422,14 @@ textarea:focus, input:focus {
   }
 }
 .txt-registration-success-name {
-  font-size: 40px;
+  font-size: 80px;
   background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   font-family: "Nothing You Could Do", cursive;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-  animation: effect 3s linear infinite;
+  animation: effect 2s linear infinite;
   font-weight: 550;
 }
 
