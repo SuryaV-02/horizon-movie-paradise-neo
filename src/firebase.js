@@ -5,7 +5,7 @@ $("#div-alert-register").hide()
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword ,signOut } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -113,6 +113,10 @@ $("#btn_register").click(function () {
     }
 })
 
+$("#btn_signout").click(function(){
+    logout()
+});
+
 function add_user_to_database(_name, _email, _dob, uid) {
     return new Promise(function (resolve, reject) {
         const db = getDatabase();
@@ -131,5 +135,17 @@ function add_user_to_database(_name, _email, _dob, uid) {
                 console.log(error)
                 reject()
             })
+    });
+}
+
+function logout() {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        window.alert("Logged out successfully")
+        location.replace('index.html')
+        // Sign-out successful.
+    }).catch((error) => {
+        window.alert(error.code + " " + error.message)
+        // An error happened.
     });
 }

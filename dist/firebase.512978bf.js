@@ -36161,6 +36161,9 @@ $("#btn_register").click(function () {
     $("#div-alert-register").show();
   }
 });
+$("#btn_signout").click(function () {
+  logout();
+});
 
 function add_user_to_database(_name, _email, _dob, uid) {
   return new Promise(function (resolve, reject) {
@@ -36179,6 +36182,16 @@ function add_user_to_database(_name, _email, _dob, uid) {
       console.log(error);
       reject();
     });
+  });
+}
+
+function logout() {
+  var auth = (0, _auth.getAuth)();
+  (0, _auth.signOut)(auth).then(function () {
+    window.alert("Logged out successfully");
+    location.replace('index.html'); // Sign-out successful.
+  }).catch(function (error) {
+    window.alert(error.code + " " + error.message); // An error happened.
   });
 }
 },{"firebase/app":"../node_modules/firebase/app/dist/index.esm.js","firebase/analytics":"../node_modules/firebase/analytics/dist/index.esm.js","firebase/auth":"../node_modules/firebase/auth/dist/index.esm.js","firebase/database":"../node_modules/firebase/database/dist/index.esm.js"}],"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
