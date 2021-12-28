@@ -64,7 +64,7 @@ function signin_user_account(_email, _password) {
                 const uid = user.uid
                 console.log("Welcome " + uid + user.displayName)
                 get_user_details_from_database(uid)
-
+                console.log("ROLLBACK")
                 window.open("profile_details.html", "_self")
                 // localStorage.setItem("login_user_name",_name);
                 // ...
@@ -163,7 +163,7 @@ function logout() {
         localStorage.setItem("user_name", "No-user")
         localStorage.setItem("user_email", "nothing@gmail.com")
         localStorage.setItem("user_dob", "00-00-00")
-        localStorage.setItem("udi", "empty")
+        localStorage.setItem("uid", "empty")
         // Sign-out successful.
     }).catch((error) => {
         window.alert(error.code + " " + error.message)
