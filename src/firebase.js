@@ -30,7 +30,6 @@ const analytics = getAnalytics(app);
 function create_user_account(_email, _password) {
     // `delay` returns a promise
     return new Promise(function (resolve, reject) {
-        // Only `delay` is able to resolve or reject the promise
 
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, _email, _password)
@@ -64,8 +63,13 @@ function signin_user_account(_email, _password) {
                 const uid = user.uid
                 console.log("Welcome " + uid + user.displayName)
                 get_user_details_from_database(uid)
+                    .then(function () {
+                        window.open("profile_details.html", "_self")
+                    }).catch(function () {
+                        alert("SriKalahasthi is great!")
+                    })
                 console.log("ROLLBACK")
-                window.open("profile_details.html", "_self")
+
                 // localStorage.setItem("login_user_name",_name);
                 // ...
                 // console.log("SUCCESS : Account Creation")
@@ -84,16 +88,19 @@ function signin_user_account(_email, _password) {
 
 function get_user_details_from_database(uid) {
     console.log("ENTERING")
-    const db = getDatabase();
-    const starCountRef = ref(db, 'users/' +uid);
-    onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        // updateStarCount(postElement, data);
-        localStorage.setItem("user_name", data.username)
-        localStorage.setItem("user_email", data.email)
-        localStorage.setItem("user_dob", data.dob)
-        localStorage.setItem("udi", uid)
-        console.log(data)
+    return new Promise(function (resolve, reject) {
+        const db = getDatabase();
+        const starCountRef = ref(db, 'users/' + uid);
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            // updateStarCount(postElement, data);
+            localStorage.setItem("user_name", data.username)
+            localStorage.setItem("user_email", data.email)
+            localStorage.setItem("user_dob", data.dob)
+            localStorage.setItem("udi", uid)
+            console.log(data)
+            resolve()
+        })
     })
 }
 
@@ -164,6 +171,9 @@ function logout() {
         localStorage.setItem("user_email", "nothing@gmail.com")
         localStorage.setItem("user_dob", "00-00-00")
         localStorage.setItem("uid", "empty")
+        var user = auth.currentUser;
+        alert(user)
+        console.log("?? -> " + user)
         // Sign-out successful.
     }).catch((error) => {
         window.alert(error.code + " " + error.message)

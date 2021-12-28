@@ -36089,7 +36089,6 @@ var analytics = (0, _analytics.getAnalytics)(app);
 function create_user_account(_email, _password) {
   // `delay` returns a promise
   return new Promise(function (resolve, reject) {
-    // Only `delay` is able to resolve or reject the promise
     var auth = (0, _auth.getAuth)();
     (0, _auth.createUserWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
@@ -36116,9 +36115,12 @@ function signin_user_account(_email, _password) {
       var user = userCredential.user;
       var uid = user.uid;
       console.log("Welcome " + uid + user.displayName);
-      get_user_details_from_database(uid);
-      console.log("ROLLBACK");
-      window.open("profile_details.html", "_self"); // localStorage.setItem("login_user_name",_name);
+      get_user_details_from_database(uid).then(function () {
+        window.open("profile_details.html", "_self");
+      }).catch(function () {
+        alert("SriKalahasthi is great!");
+      });
+      console.log("ROLLBACK"); // localStorage.setItem("login_user_name",_name);
       // ...
       // console.log("SUCCESS : Account Creation")
       // window.open("./registration_success.html");
@@ -36133,16 +36135,19 @@ function signin_user_account(_email, _password) {
 
 function get_user_details_from_database(uid) {
   console.log("ENTERING");
-  var db = (0, _database.getDatabase)();
-  var starCountRef = (0, _database.ref)(db, 'users/' + uid);
-  (0, _database.onValue)(starCountRef, function (snapshot) {
-    var data = snapshot.val(); // updateStarCount(postElement, data);
+  return new Promise(function (resolve, reject) {
+    var db = (0, _database.getDatabase)();
+    var starCountRef = (0, _database.ref)(db, 'users/' + uid);
+    (0, _database.onValue)(starCountRef, function (snapshot) {
+      var data = snapshot.val(); // updateStarCount(postElement, data);
 
-    localStorage.setItem("user_name", data.username);
-    localStorage.setItem("user_email", data.email);
-    localStorage.setItem("user_dob", data.dob);
-    localStorage.setItem("udi", uid);
-    console.log(data);
+      localStorage.setItem("user_name", data.username);
+      localStorage.setItem("user_email", data.email);
+      localStorage.setItem("user_dob", data.dob);
+      localStorage.setItem("udi", uid);
+      console.log(data);
+      resolve();
+    });
   });
 }
 
@@ -36211,7 +36216,10 @@ function logout() {
     localStorage.setItem("user_name", "No-user");
     localStorage.setItem("user_email", "nothing@gmail.com");
     localStorage.setItem("user_dob", "00-00-00");
-    localStorage.setItem("uid", "empty"); // Sign-out successful.
+    localStorage.setItem("uid", "empty");
+    var user = auth.currentUser;
+    alert(user);
+    console.log("?? -> " + user); // Sign-out successful.
   }).catch(function (error) {
     window.alert(error.code + " " + error.message); // An error happened.
   });
