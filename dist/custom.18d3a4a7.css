@@ -11489,10 +11489,12 @@ textarea:focus, input:focus {
 
 .img-profile {
   width: 350px;
+  height: 350px;
 }
 @media (max-width: 575px) {
   .img-profile {
     width: 250px;
+    height: 250px;
   }
 }
 
