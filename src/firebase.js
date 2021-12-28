@@ -28,7 +28,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 function create_user_account(_email, _password) {
-    if (_email != "" && _password != "") {
+    // `delay` returns a promise
+    return new Promise(function (resolve, reject) {
+        // Only `delay` is able to resolve or reject the promise
+
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, _email, _password)
             .then((userCredential) => {
@@ -36,17 +39,19 @@ function create_user_account(_email, _password) {
                 const user = userCredential.user;
                 console.log(user)
                 // ...
+                var uid = user.uid
                 console.log("SUCCESS : Account Creation")
+                localStorage.setItem("uid", uid)
+                resolve(uid)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                reject(12345)
                 // ..
             });
 
-    } else {
-        window.alert("Enter all detailz");
-    }
+    });
 }
 
 function signin_user_account(_email, _password) {
@@ -77,7 +82,7 @@ $("#btn_submit").click(function () {
     var _email = $("#ipt_email").val();
     var _password = $("#ipt_password").val();
     signin_user_account(_email, _password)
-    window.open("profile_details.html","_self")
+    window.open("profile_details.html", "_self")
 
 })
 
@@ -88,20 +93,50 @@ $("#btn_register").click(function () {
     var _password = $("#ipt_reg_password").val();
     var _password_conf = $("#ipt_reg_password_conf").val();
     // let uid = (Math.random() + 1).toString(36).substring(2);
-    create_user_account(_email, _password);
     if (_name != "" && _email != "" && _dob != "" && _password != "" && _password_conf != "" && _password === _password_conf) {
+        create_user_account(_email, _password)
+            .then(function (uid) {
+                add_user_to_database(_name, _email, _dob, uid)
+                    .then(function (flag) {
+                        window.open("registration_success.html", "_self")
+                    })
+                    .catch(function (flag) {
+                        alert("We cannot register you at this moment..");
+                    })
+
+            })
+            .catch(function (err) {
+                console.log("Returned with empty uid! ", err)
+            })
+    } else {
+        $("#div-alert-register").show()
+    }
+})
+
+function add_user_to_database(_name, _email, _dob, uid) {
+
+
+    return new Promise(function (resolve, reject) {
+
         const db = getDatabase();
         set(ref(db, 'users/' + uid), {
             username: _name,
             email: _email,
             dob: _dob
-        });
-        console.log("SUCCESS : Registration")
-        localStorage.setItem("user_name",_name);
-        localStorage.setItem("user_email",_email);
-        localStorage.setItem("user_dob",_dob);
-        window.open("registration_success.html",_name)
-    } else {
-        $("#div-alert-register").show()
-    }
-})
+        }).then(function () {
+            console.log("SUCCESS : Registration")
+            localStorage.setItem("user_name", _name);
+            localStorage.setItem("user_email", _email);
+            localStorage.setItem("user_dob", _dob);
+            resolve()
+        })
+            .catch(function () {
+                console.log(error)
+                reject()
+            })
+
+
+    });
+
+
+}

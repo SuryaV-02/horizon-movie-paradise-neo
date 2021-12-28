@@ -36087,21 +36087,25 @@ var app = (0, _app.initializeApp)(firebaseConfig);
 var analytics = (0, _analytics.getAnalytics)(app);
 
 function create_user_account(_email, _password) {
-  if (_email != "" && _password != "") {
+  // `delay` returns a promise
+  return new Promise(function (resolve, reject) {
+    // Only `delay` is able to resolve or reject the promise
     var auth = (0, _auth.getAuth)();
     (0, _auth.createUserWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
       console.log(user); // ...
 
+      var uid = user.uid;
       console.log("SUCCESS : Account Creation");
+      localStorage.setItem("uid", uid);
+      resolve(uid);
     }).catch(function (error) {
       var errorCode = error.code;
-      var errorMessage = error.message; // ..
+      var errorMessage = error.message;
+      reject(12345); // ..
     });
-  } else {
-    window.alert("Enter all detailz");
-  }
+  });
 }
 
 function signin_user_account(_email, _password) {
@@ -36143,24 +36147,40 @@ $("#btn_register").click(function () {
   var _password_conf = $("#ipt_reg_password_conf").val(); // let uid = (Math.random() + 1).toString(36).substring(2);
 
 
-  create_user_account(_email, _password);
-
   if (_name != "" && _email != "" && _dob != "" && _password != "" && _password_conf != "" && _password === _password_conf) {
+    create_user_account(_email, _password).then(function (uid) {
+      add_user_to_database(_name, _email, _dob, uid).then(function (flag) {
+        window.open("registration_success.html", "_self");
+      }).catch(function (flag) {
+        alert("We cannot register you at this moment..");
+      });
+    }).catch(function (err) {
+      console.log("Returned with empty uid! ", err);
+    });
+  } else {
+    $("#div-alert-register").show();
+  }
+});
+
+function add_user_to_database(_name, _email, _dob, uid) {
+  return new Promise(function (resolve, reject) {
     var db = (0, _database.getDatabase)();
     (0, _database.set)((0, _database.ref)(db, 'users/' + uid), {
       username: _name,
       email: _email,
       dob: _dob
+    }).then(function () {
+      console.log("SUCCESS : Registration");
+      localStorage.setItem("user_name", _name);
+      localStorage.setItem("user_email", _email);
+      localStorage.setItem("user_dob", _dob);
+      resolve();
+    }).catch(function () {
+      console.log(error);
+      reject();
     });
-    console.log("SUCCESS : Registration");
-    localStorage.setItem("user_name", _name);
-    localStorage.setItem("user_email", _email);
-    localStorage.setItem("user_dob", _dob);
-    window.open("registration_success.html", _name);
-  } else {
-    $("#div-alert-register").show();
-  }
-});
+  });
+}
 },{"firebase/app":"../node_modules/firebase/app/dist/index.esm.js","firebase/analytics":"../node_modules/firebase/analytics/dist/index.esm.js","firebase/auth":"../node_modules/firebase/auth/dist/index.esm.js","firebase/database":"../node_modules/firebase/database/dist/index.esm.js"}],"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -36189,7 +36209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10014" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9874" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
