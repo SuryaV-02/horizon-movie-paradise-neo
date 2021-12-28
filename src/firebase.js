@@ -5,7 +5,7 @@ $("#div-alert-register").hide()
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword ,signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword ,signOut,updateCurrentUser } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -62,7 +62,8 @@ function signin_user_account(_email, _password) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log("Welcome " + user.uid + user.displayName)
-                // localStorage.setItem("login_user_name",_name);
+                localStorage.setItem("user_name",_name);
+                localStorage.setItem("user_email",_email);
                 // ...
                 // console.log("SUCCESS : Account Creation")
                 // window.open("./registration_success.html");
@@ -76,6 +77,40 @@ function signin_user_account(_email, _password) {
     } else {
         $("#div-alert-login").show();
     }
+}
+
+
+function add_user_to_database(_name, _email, _dob, uid) {
+    return new Promise(function (resolve, reject) {
+        const db = getDatabase();
+        set(ref(db, 'users/' + uid), {
+            username: _name,
+            email: _email,
+            dob: _dob
+        }).then(function () {
+            console.log("SUCCESS : Registration")
+            localStorage.setItem("user_name", _name);
+            localStorage.setItem("user_email", _email);
+            localStorage.setItem("user_dob", _dob);
+            resolve()
+        })
+            .catch(function () {
+                console.log(error)
+                reject()
+            })
+    });
+}
+
+function logout() {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        window.alert("Logged out successfully")
+        location.replace('index.html')
+        // Sign-out successful.
+    }).catch((error) => {
+        window.alert(error.code + " " + error.message)
+        // An error happened.
+    });
 }
 
 $("#btn_submit").click(function () {
@@ -117,35 +152,16 @@ $("#btn_signout").click(function(){
     logout()
 });
 
-function add_user_to_database(_name, _email, _dob, uid) {
-    return new Promise(function (resolve, reject) {
-        const db = getDatabase();
-        set(ref(db, 'users/' + uid), {
-            username: _name,
-            email: _email,
-            dob: _dob
-        }).then(function () {
-            console.log("SUCCESS : Registration")
-            localStorage.setItem("user_name", _name);
-            localStorage.setItem("user_email", _email);
-            localStorage.setItem("user_dob", _dob);
-            resolve()
-        })
-            .catch(function () {
-                console.log(error)
-                reject()
-            })
-    });
-}
-
-function logout() {
+$("#icon_user").click(function(){
     const auth = getAuth();
-    signOut(auth).then(() => {
-        window.alert("Logged out successfully")
-        location.replace('index.html')
-        // Sign-out successful.
-    }).catch((error) => {
-        window.alert(error.code + " " + error.message)
-        // An error happened.
-    });
-}
+    const user = auth.currentUser;
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      // ...
+      window.open("profile_details.html","_self");
+    } else {
+        window.open("login.html","_self");
+      // No user is signed in.
+    }
+});

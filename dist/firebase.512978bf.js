@@ -36114,8 +36114,9 @@ function signin_user_account(_email, _password) {
     (0, _auth.signInWithEmailAndPassword)(auth, _email, _password).then(function (userCredential) {
       // Signed in 
       var user = userCredential.user;
-      console.log("Welcome " + user.uid + user.displayName); // localStorage.setItem("login_user_name",_name);
-      // ...
+      console.log("Welcome " + user.uid + user.displayName);
+      localStorage.setItem("user_name", _name);
+      localStorage.setItem("user_email", _email); // ...
       // console.log("SUCCESS : Account Creation")
       // window.open("./registration_success.html");
     }).catch(function (error) {
@@ -36125,6 +36126,36 @@ function signin_user_account(_email, _password) {
   } else {
     $("#div-alert-login").show();
   }
+}
+
+function add_user_to_database(_name, _email, _dob, uid) {
+  return new Promise(function (resolve, reject) {
+    var db = (0, _database.getDatabase)();
+    (0, _database.set)((0, _database.ref)(db, 'users/' + uid), {
+      username: _name,
+      email: _email,
+      dob: _dob
+    }).then(function () {
+      console.log("SUCCESS : Registration");
+      localStorage.setItem("user_name", _name);
+      localStorage.setItem("user_email", _email);
+      localStorage.setItem("user_dob", _dob);
+      resolve();
+    }).catch(function () {
+      console.log(error);
+      reject();
+    });
+  });
+}
+
+function logout() {
+  var auth = (0, _auth.getAuth)();
+  (0, _auth.signOut)(auth).then(function () {
+    window.alert("Logged out successfully");
+    location.replace('index.html'); // Sign-out successful.
+  }).catch(function (error) {
+    window.alert(error.code + " " + error.message); // An error happened.
+  });
 }
 
 $("#btn_submit").click(function () {
@@ -36164,36 +36195,19 @@ $("#btn_register").click(function () {
 $("#btn_signout").click(function () {
   logout();
 });
-
-function add_user_to_database(_name, _email, _dob, uid) {
-  return new Promise(function (resolve, reject) {
-    var db = (0, _database.getDatabase)();
-    (0, _database.set)((0, _database.ref)(db, 'users/' + uid), {
-      username: _name,
-      email: _email,
-      dob: _dob
-    }).then(function () {
-      console.log("SUCCESS : Registration");
-      localStorage.setItem("user_name", _name);
-      localStorage.setItem("user_email", _email);
-      localStorage.setItem("user_dob", _dob);
-      resolve();
-    }).catch(function () {
-      console.log(error);
-      reject();
-    });
-  });
-}
-
-function logout() {
+$("#icon_user").click(function () {
   var auth = (0, _auth.getAuth)();
-  (0, _auth.signOut)(auth).then(function () {
-    window.alert("Logged out successfully");
-    location.replace('index.html'); // Sign-out successful.
-  }).catch(function (error) {
-    window.alert(error.code + " " + error.message); // An error happened.
-  });
-}
+  var user = auth.currentUser;
+
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    // ...
+    window.open("profile_details.html", "_self");
+  } else {
+    window.open("login.html", "_self"); // No user is signed in.
+  }
+});
 },{"firebase/app":"../node_modules/firebase/app/dist/index.esm.js","firebase/analytics":"../node_modules/firebase/analytics/dist/index.esm.js","firebase/auth":"../node_modules/firebase/auth/dist/index.esm.js","firebase/database":"../node_modules/firebase/database/dist/index.esm.js"}],"C:/Users/SURYA/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -36222,7 +36236,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5350" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
